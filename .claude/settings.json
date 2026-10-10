@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/hooks/block-secrets.py"
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/block-secrets.py\""
           }
         ]
       }
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/hooks/verify-no-secrets.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/verify-no-secrets.sh\""
           }
         ]
       }
