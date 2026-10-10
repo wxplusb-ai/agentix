@@ -1,0 +1,15 @@
+{
+  "name": "agentix",
+  "description": "Agentix Claude Code plugins.",
+  "owner": {
+    "name": "John James",
+    "email": "john.james.ai.studio@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "ai-ddp-planning",
+      "source": "./plugins/ai-ddp-planning",
+      "description": "AI-AD&D planning team that produces a discovery-driven, rolling-wave project plan for an AI application and publishes it to ClickUp."
+    }
+  ]
+}

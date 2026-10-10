@@ -1,0 +1,9 @@
+{
+  "name": "ai-ddp-planning",
+  "version": "0.1.0",
+  "description": "AI-AD&D planning team: a Team Lead, Architect, Analyst and Integrator that produce a discovery-driven, rolling-wave project plan for an AI application and publish it to ClickUp.",
+  "author": {
+    "name": "John James",
+    "email": "john.james.ai.studio@gmail.com"
+  }
+}
