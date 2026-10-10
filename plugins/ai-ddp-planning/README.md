@@ -41,24 +41,144 @@ The engagement runs in six steps. Each step produces a document in your reposito
 
 ## Requirements
 
-- **Claude Code**, with plugin support.
-- **The `xlsx` skill**, which the Analyst uses to build the workbook. It is part of the `document-skills` plugin in Anthropic's skills marketplace. See [Installation](#installation).
+- **A paid Claude plan** (Pro, Max, Team or Enterprise) or an Anthropic Console account with API credit. Claude Code does not work on the free plan.
+- **The Claude Code command-line tool.** The Claude extension for VS Code on its own is not enough: the installation and launch commands below run `claude` in a terminal.
+- **Python 3**, which the Analyst uses to build the plan workbook.
+- **Git for Windows**, on Windows only. Claude Code uses it to run commands.
+- **The `xlsx` skill**, from the `document-skills` plugin in Anthropic's skills marketplace.
 - **A ClickUp account**, only if you want to publish the plan. See [Publishing to ClickUp](#publishing-to-clickup).
 
-## Installation
+[Setting up your computer](#setting-up-your-computer) covers everything except ClickUp, and [Installing the plugin](#installing-the-plugin) adds the plugin and the `xlsx` skill to a project folder.
 
-The plugin is distributed through the Agentix marketplace, published from the [wxplusb-ai/agentix](https://github.com/wxplusb-ai/agentix) repository. Run these commands from the repository where you want to plan your project.
+## Setting up your computer
 
-Add the Agentix marketplace and install the plugin for this repository:
+You do this once per computer. Follow the section for where you will run Claude Code:
+
+- **[Windows](#windows)** runs Claude Code directly on Windows. Choose this if you are unsure.
+- **[Linux and WSL2](#linux-and-wsl2)** is for Linux, and for Windows users who already work in WSL2 (Windows Subsystem for Linux). macOS users can follow it too, installing Python from [python.org](https://www.python.org/downloads/) or Homebrew instead of `apt`.
+
+Each step's heading tells you how to check whether it is already done. If the check passes, skip the step.
+
+### Windows
+
+Run the commands in this section in **PowerShell**: open the Start menu and search for "PowerShell". The terminal in VS Code also runs PowerShell on Windows by default.
+
+#### Step 1: Install Git for Windows (skip if `git --version` prints a version number)
+
+Download Git for Windows from [git-scm.com/download/win](https://git-scm.com/download/win), run the installer and accept the defaults. You do not need to use Git yourself; Claude Code needs the Git Bash shell that comes with it.
+
+#### Step 2: Install Python (skip if `python --version` prints Python 3)
+
+If `python --version` opens the Microsoft Store or reports that Python was not found, Python is not installed.
+
+Download the installer from [python.org/downloads](https://www.python.org/downloads/). On the first screen of the installer, **tick "Add python.exe to PATH"** before clicking Install. Without it, Claude Code cannot find Python.
+
+#### Step 3: Install Claude Code (skip if `claude --version` prints a version number)
+
+In PowerShell, run:
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+Then **close every PowerShell window and quit VS Code completely**, and open them again. A terminal that was open during the installation does not see the new `claude` command, and VS Code keeps its old settings until it is fully restarted.
+
+Run `claude --version` in a new window. If it still reports that `claude` is not recognized, add the folder the installer used to your PATH:
+
+1. Open the Start menu, search for **Edit environment variables for your account** and open it.
+2. Select **Path** in the top list and click **Edit**.
+3. Click **New** and enter `%USERPROFILE%\.local\bin`.
+4. Click **OK** in both windows, then close and reopen your terminals and VS Code again.
+
+#### Step 4: Sign in to Claude Code (skip if you have used Claude Code on this computer before)
+
+Run `claude`. It opens your browser so you can sign in to your Claude account. When Claude Code shows its prompt, type `/exit` to leave.
+
+Your computer is ready. Continue with [Installing the plugin](#installing-the-plugin).
+
+### Linux and WSL2
+
+#### Step 1: Set up WSL2 (skip if you are on Linux or macOS, or if `wsl -l -v` in PowerShell lists a distribution with VERSION 2)
+
+Open PowerShell as administrator (right-click it in the Start menu and choose **Run as administrator**) and run:
+
+```powershell
+wsl --install
+```
+
+Restart Windows when asked. After the restart, an Ubuntu window opens and asks you to create a Linux username and password. These are separate from your Windows account.
+
+If you use VS Code, install the **WSL** extension from the Extensions view. It lets VS Code open folders and terminals inside WSL.
+
+From here on, run every command in the **Ubuntu terminal**, not PowerShell. Claude Code installed on Windows and Claude Code installed in WSL are separate installations; installing one does not give you the other.
+
+#### Step 2: Install curl and Python (skip if `curl --version` and `python3 --version` both print version numbers)
+
+On Ubuntu and Debian, including the default WSL2 distribution:
+
+```bash
+sudo apt update
+sudo apt install -y curl python3 python3-pip
+```
+
+On other distributions, install `curl`, `python3` and `pip` with your package manager.
+
+#### Step 3: Install Claude Code (skip if `claude --version` prints a version number)
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Open a new terminal and run `claude --version`. If it reports `command not found`, add the installation folder to your PATH:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+If your shell is zsh, use `~/.zshrc` instead of `~/.bashrc`.
+
+#### Step 4: Sign in to Claude Code (skip if you have used Claude Code on this computer before)
+
+Run `claude` and follow the prompts to sign in to your Claude account. In WSL2 the browser may not open by itself; if not, copy the link Claude Code prints into your Windows browser. When Claude Code shows its prompt, type `/exit` to leave.
+
+Your computer is ready. Continue with [Installing the plugin](#installing-the-plugin).
+
+## Installing the plugin
+
+The plugin is distributed through the Agentix marketplace, published from the [wxplusb-ai/agentix](https://github.com/wxplusb-ai/agentix) repository.
+
+You install it into the folder where you want to plan your project. Any folder works: a code repository, a documents folder or an Obsidian vault. It does not need to be a Git repository. The commands are the same on Windows, Linux and WSL2.
+
+### Step 1: Open your project folder in a terminal
+
+**In VS Code on Windows**, choose **File > Open Folder** and select your project folder, then choose **Terminal > New Terminal**. For an Obsidian vault, select the vault's top-level folder: the one that contains the `.obsidian` folder.
+
+**In VS Code with WSL2**, click the blue remote indicator in the bottom-left corner and choose **Connect to WSL**, then choose **File > Open Folder** and **Terminal > New Terminal**. Windows drives appear under `/mnt`, so a vault at `C:\Users\Jane\Documents\MyVault` is at `/mnt/c/Users/Jane/Documents/MyVault`.
+
+**In any other terminal**, change to the folder with `cd`, for example `cd "C:\Users\Jane\Documents\MyVault"` in PowerShell.
+
+Check that the terminal prompt shows your project folder before going on. The plugin is installed into whichever folder the terminal is in.
+
+### Step 2: Add the Agentix marketplace (skip if you have added it on this computer before)
 
 ```bash
 claude plugin marketplace add wxplusb-ai/agentix
+```
+
+### Step 3: Install the planning plugin in this folder (skip if this folder's `.claude/settings.json` already lists `ai-ddp-planning@agentix`)
+
+```bash
 claude plugin install ai-ddp-planning@agentix --scope project
 ```
 
-Project scope records the plugin in the repository's `.claude/settings.json`, so anyone who works on the repository can see it is in use. Each person still installs the plugin on their own machine.
+Project scope records the plugin in the folder's `.claude/settings.json`, so anyone who works in the folder can see it is in use. Each person still installs the plugin on their own computer.
 
-Then add Anthropic's skills marketplace and install `document-skills`, which provides the `xlsx` skill the Analyst uses to build the plan workbook:
+Obsidian hides folders whose names start with a dot, so the new `.claude` folder does not appear in your vault. That is expected.
+
+### Step 4: Install the `xlsx` skill (skip if you have installed `document-skills` on this computer before)
+
+Add Anthropic's skills marketplace and install `document-skills`, which provides the `xlsx` skill the Analyst uses to build the plan workbook:
 
 ```bash
 claude plugin marketplace add anthropics/skills
@@ -67,11 +187,15 @@ claude plugin install document-skills@anthropic-agent-skills
 
 The same commands work inside a Claude Code session with a leading slash, for example `/plugin marketplace add wxplusb-ai/agentix`.
 
-To try the plugin from a local clone of the repository without installing it, load it for a single session:
+### Trying the plugin without installing it
+
+To try the plugin from a local clone of the repository, load it for a single session instead of following Steps 2 and 3:
 
 ```bash
 claude --plugin-dir <path-to-agentix>/plugins/ai-ddp-planning --agent ai-ddp-planning:team-lead
 ```
+
+You still need the `xlsx` skill from Step 4 to build the plan workbook.
 
 ## Usage
 
@@ -120,9 +244,19 @@ Nothing is written to ClickUp until you have reviewed the plan in Excel and expl
 
 1. **An API token.** Create a personal token in ClickUp under your user settings, then set it in the shell you launch Claude Code from:
 
+   On Linux, macOS or WSL2:
+
    ```bash
    export CLICKUP_API_TOKEN=pk_your_token
    ```
+
+   In PowerShell on Windows:
+
+   ```powershell
+   $env:CLICKUP_API_TOKEN = "pk_your_token"
+   ```
+
+   Either way, the token lasts only as long as that terminal window, so set it again in each new terminal before starting Claude Code.
 
    The team never asks for the token in conversation and never writes it to a file.
 
