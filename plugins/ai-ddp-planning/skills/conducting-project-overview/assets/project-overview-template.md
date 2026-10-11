@@ -31,7 +31,7 @@ approved_on:
 
 ## 5. Users, Roles and Access
 
-<Who uses it, through what interface, sign-in and permissions, whether the agent acts with a user's access.>
+<Who uses it, through what interface, sign-in and permissions, whether the application acts with a user's access.>
 
 ## 6. Workflow and Autonomy
 
@@ -51,50 +51,27 @@ approved_on:
 
 ## 10. Current State
 
-<For a new project: what exists to build on. For an in-flight project: what is complete (with the evidence it produced), in progress and planned.>
+<For a new project: what exists to build on. For an in-flight project: what is complete (and what it produced and showed), in progress and planned.>
 
-| Item | Status | Evidence or output | Related catalog node |
-|---|---|---|---|
-| <item> | <complete / in progress / planned> | <what it produced> | <node number and name, if any> |
+| Item | Status | What it produced or showed |
+|---|---|---|
+| <item> | <complete / in progress / planned> | <outputs and findings> |
 
 ## 11. Timelines, Budget and Capacity
 
 <Hard dates and why, budget constraints, who will do the work and their weekly hours.>
 
-## 12. Beliefs, Assumptions and Risks
+## 12. Perceived Next Steps
 
-<What the client believes must be true and what worries them, in their own words. Input to Beliefs and Bets.>
+<What the client would do first, and why.>
 
-## 13. Perceived Next Steps
+## 13. Topics Not Covered
 
-<What the client would do first, and any difference from our view.>
+| Topic | Reason |
+|---|---|
+| <topic> | <why it does not apply to this project> |
 
-## 14. Category Coverage
-
-| # | Category | Status | Reason or follow-up |
-|---|---|---|---|
-| 1 | Product Strategy | <in play / out of play / unknown> | |
-| 2 | User Experience Design | | |
-| 3 | Frontend Engineering | | |
-| 4 | Identity and Access Management | | |
-| 5 | Operational Data Engineering | | |
-| 6 | Knowledge Retrieval Engineering | | |
-| 7 | Context and Memory Engineering | | |
-| 8 | Model Gateway Operations | | |
-| 9 | Cognitive Agent Architecture | | |
-| 10 | Tool Surface Integration | | |
-| 11 | Multi-Agent Orchestration | | |
-| 12 | Backend Application Engineering | | |
-| 13 | Runtime Safety and Moderation | | |
-| 14 | Human Operations | | |
-| 15 | Quality Engineering and Evaluation | | |
-| 16 | Deployment and Cloud Infrastructure | | |
-| 17 | Telemetry and Observability | | |
-| 18 | Usage Metering and Monetization | | |
-| 19 | Product Analytics | | |
-| 20 | Model Adaptation and Continuous Improvement | | |
-
-## 15. Open Questions
+## 14. Open Questions
 
 - <question, and who can answer it>
 

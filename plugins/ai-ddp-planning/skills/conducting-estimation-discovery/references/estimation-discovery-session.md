@@ -11,7 +11,7 @@ How to run an estimation discovery session, handle uncertainty, and judge when t
 
 - Work topic by topic. Explain briefly why each group of questions matters ("these tell us how big the data preparation work is").
 - Ask for counts and observable facts, not opinions about effort. The client knows how many document types they have; estimating hours is the Analyst's job.
-- When an answer surprises you, ask how they know. A surprising number is often a belief, and may belong in the register.
+- When an answer surprises you, ask how they know. A surprising number is often a belief, and may belong in Beliefs and Bets.
 - Capture who answered and how confident they were.
 
 ## When the client does not know

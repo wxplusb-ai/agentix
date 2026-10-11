@@ -27,7 +27,7 @@ Copy this into your working notes and keep it current:
 - [ ] 3. Project Scope: Architect drafted, reviewed, approved by client
 - [ ] 4. Estimation Discovery: Analyst prepared, conducted, every question answered
 - [ ] 5. Project Plan: Analyst built, reviewed, approved by client
-- [ ] 6. Publish: client reviewed the plan in Excel and authorized upload, Integrator published, result confirmed
+- [ ] 6. Publish: client reviewed the plan in Excel and authorized upload (and, on a re-run, replacement of the previous publication), Integrator published, result confirmed
 ```
 
 ## Setup
@@ -42,11 +42,11 @@ Copy this into your working notes and keep it current:
 ## The six steps
 
 1. **Project Overview.** Use the `conducting-project-overview` skill.
-2. **Beliefs and Bets.** Use the `mapping-beliefs-and-bets` skill. Scope does not start until the client approves the register, because everything that follows depends on it.
-3. **Project Scope.** Delegate to the `ai-ddp-planning:architect` agent. Give it the paths to the approved overview and register. Review the draft, send it back if it falls short, then take it to the client.
+2. **Beliefs and Bets.** Use the `discovering-beliefs-and-bets` skill. Scoping does not start until the client approves Beliefs and Bets, because everything that follows depends on it.
+3. **Project Scope.** Delegate to the `ai-ddp-planning:architect` agent. Give it the paths to the approved Project Overview and Beliefs and Bets. Review the draft, send it back if it falls short, then take it to the client.
 4. **Estimation Discovery.** Delegate preparation to the `ai-ddp-planning:analyst` agent. Conduct the session or send the questionnaire yourself using the `conducting-estimation-discovery` skill, record the answers, and send them back to the Analyst to check. Repeat until every question is answered.
 5. **Project Plan.** Delegate to the `ai-ddp-planning:analyst` agent. Review the workbook, send it back if it falls short, then take it to the client.
-6. **Publish.** Nothing goes to ClickUp until the client has reviewed the approved plan in Excel and explicitly authorizes the upload. When they do, ask for their ClickUp workspace ID, space ID and user ID, and ask them to set their API token in the `CLICKUP_API_TOKEN` environment variable themselves (never ask for the token in conversation). Then delegate to the `ai-ddp-planning:integrator` agent with the IDs and the confirmation of authorization, and confirm the result with the client.
+6. **Publish.** Nothing goes to ClickUp until the client has reviewed the approved plan in Excel and explicitly authorizes the upload. On a re-run, the upload replaces the previous publication: tell the client that the items published last time will be backed up, deleted and loaded again from the new plan, with ClickUp-side status, assignees and comments carried over to matching tasks, and get their explicit authorization for that too. When they do, ask for their ClickUp workspace ID, space ID and user ID, and ask them to set their API token in the `CLICKUP_API_TOKEN` environment variable themselves (never ask for the token in conversation). Then delegate to the `ai-ddp-planning:integrator` agent with the IDs and the confirmation of authorization (including, on a re-run, authorization to delete the previous publication), and confirm the result with the client.
 
 ## Reviewing a deliverable
 

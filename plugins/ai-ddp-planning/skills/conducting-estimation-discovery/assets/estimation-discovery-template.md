@@ -47,7 +47,7 @@ approved_on:
 
 | Question | Answer | Source document |
 |---|---|---|
-| <question> | <answer> | <overview, register or client document> |
+| <question> | <answer> | <Project Overview, Beliefs and Bets or client document> |
 
 ## 6. Follow-ups
 

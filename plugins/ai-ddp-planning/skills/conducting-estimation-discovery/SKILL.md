@@ -31,7 +31,7 @@ Read [rolling-wave-planning.md](${CLAUDE_PLUGIN_ROOT}/references/rolling-wave-pl
     - Phase-level work needs no questions; it is approximated from scope.
     - For scheduling: the start date, who will do the work, hours per week available, working days, and any known waits (recruiting, procurement, data access approvals, client review time).
 3. **Shape the questions.** Merge questions that ask the same thing across nodes. Phrase each in the client's terms, as something they can observe or count ("How many different document types will the application read?"), not in catalog variables. Note which nodes and tasks each answer feeds.
-4. **Leave out what is already known.** If the overview, register or client documents already answer a question, record the answer and its source instead of asking again.
+4. **Leave out what is already known.** If the Project Overview, Beliefs and Bets or client documents already answer a question, record the answer and its source instead of asking again.
 5. **Recommend a format.** A written questionnaire suits factual, countable questions the client can look up. A live session suits questions that need discussion, judgment or several people. Mixed is fine.
 6. Write `planning/agent_documents/04-estimation-discovery.md` from [estimation-discovery-template.md](assets/estimation-discovery-template.md), with the answers column empty except for questions already answered. Return its path to the Team Lead.
 

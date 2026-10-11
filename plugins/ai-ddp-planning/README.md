@@ -27,11 +27,11 @@ The plugin provides four agents, modeled on a consulting engagement.
 
 The engagement runs in six steps. Each step produces a document in your repository, and the team does not move on until you have approved it.
 
-1. **Project Overview.** The Team Lead reads any documents you provide and interviews you about your goals, market, users, workflow, data, technology, constraints and current progress. The interview adapts to your project: a personal tool running on your own machine is not asked about user accounts or billing. The overview ends by recording, for each of the catalog's 20 categories, whether it applies to your project.
+1. **Project Overview.** The Team Lead reads any documents you provide and interviews you about your goals, market, users, workflow, data, technology, constraints and current progress. The interview adapts to your project: a personal tool running on your own machine is not asked about user accounts or billing. Topics that do not apply are skipped, and the overview says which and why. The overview describes your project as it is today; it does not plan anything.
 
-2. **Beliefs and Bets.** The Team Lead works through the beliefs your project depends on: about your customers, the value of the solution, your data, what a model can do, cost, and adoption. Together you rate how damaging each would be if wrong and how much evidence supports it. The consequential, weakly supported beliefs become the project's bets. Everything that follows depends on this step.
+2. **Beliefs and Bets.** A structured discussion. The Team Lead walks you through the areas your project depends on, starting with its core bet (the one proposition the whole application stakes its existence on), then the areas that apply to you: your customers, the value of the solution, your data, what a model can do, cost, adoption and so on. You state what you believe; the Team Lead helps sharpen each belief into something that can be tested. Together you rate how damaging each would be if wrong and how much evidence supports it. The consequential, weakly supported beliefs become the project's bets. Everything that follows depends on this step.
 
-3. **Project Scope.** The Architect selects the catalog nodes your application needs and the nodes that will test each bet, then organizes them into phases. A phase is whatever grouping makes sense for your project: an experiment that tests a bet, a body of work such as data acquisition, or a release. Work that tests the riskiest bets is placed as early as its dependencies allow. If no catalog node can test one of your bets, the Architect proposes a new one.
+3. **Project Scope.** The Architect selects the catalog nodes your application needs and the nodes that will produce evidence for each bet (often several nodes, sometimes whole phases), then organizes them into phases. A phase is whatever grouping makes sense for your project: the work that validates a bet, a body of work such as data acquisition, or a release. Later phases are included even when their nodes cannot be chosen yet. Work on the riskiest bets is placed as early as its dependencies allow. Every phase and node is explained in full, so the scope reads on its own without the catalog. If no catalog node can validate one of your beliefs, the Architect proposes a complete new node.
 
 4. **Estimation Discovery.** The Analyst decides how far ahead the plan can be detailed with confidence, then gathers the questions each node in that range needs answered, taken from the catalog. The Team Lead puts them to you, as a questionnaire or in conversation. Where you are unsure of an answer, you give a low and a high value. Planning does not begin until every question has an answer.
 
@@ -227,9 +227,9 @@ All deliverables are written to `planning/agent_documents/`:
 
 | File | Contents |
 |---|---|
-| `01-project-overview.md` | Your project, its current state, and which catalog categories apply |
+| `01-project-overview.md` | Your project as it is today, including its current state |
 | `02-beliefs-and-bets.md` | Every belief the project rests on, rated, with the bets ranked |
-| `03-project-scope.md` | The phases, the nodes in each, and which bets each node tests |
+| `03-project-scope.md` | The phases, the nodes in each explained in full, and how the bets will be validated |
 | `04-estimation-discovery.md` | The estimation questions and your answers |
 | `05-project-plan.xlsx` | The project plan |
 | `06-clickup-publication.md` | A record of what was published to ClickUp, with item IDs |
@@ -279,15 +279,15 @@ The plan maps onto ClickUp as follows:
 | Priority | Priority |
 | Tags | Tags |
 
-Rows planned at node or phase level have no individual tasks yet. Each is published as a single task named after its node or phase, carrying the estimate and dates from the plan.
+ClickUp holds estimates and dates only on tasks, not on folders or lists. Rows planned at node level have no individual tasks yet, so each is published as its node's list containing one task named after the node. Rows planned at phase level are published as the phase's folder, containing one list and one task named after the phase. These tasks carry the estimate and dates from the plan.
 
-Publishing is safe to repeat. The Integrator reads what already exists in the space and updates matching items instead of creating duplicates. It never deletes anything without your explicit instruction.
+Publishing again replaces the previous publication. The Integrator first downloads everything it published last time to a backup file in `planning/agent_documents/`, carries your status changes, assignees and comments over to the matching tasks in the new plan, deletes only the items it published last time, and then loads the new version. Anything else in the space is never touched. The Team Lead asks for your explicit authorization before any of this happens.
 
 ## Planning again
 
 Plans made this way are meant to be revisited. Run the engagement again when the project reaches a milestone, typically when a bet has been tested and the team knows something it did not know before.
 
-On a second run, the Team Lead starts from the earlier deliverables. The overview records what has been completed and what was learned, the bets are updated with the evidence that confirmed or refuted them, and the next stretch of work is planned in detail. Each deliverable is saved as a new version, such as `03-project-scope-v2.md`, and earlier versions are kept. Publishing again updates the existing ClickUp folders and lists.
+On a second run, the Team Lead starts from the earlier deliverables. The overview records what has been completed and what was learned, the bets are updated with the evidence that confirmed or refuted them, and the next stretch of work is planned in detail. Each deliverable is saved as a new version, such as `03-project-scope-v2.md`, and earlier versions are kept. Publishing again replaces the previous ClickUp publication, after backing it up.
 
 You decide when to plan again. The agents do not revise the plan on their own.
 
@@ -318,7 +318,7 @@ The skills follow the steps of the engagement:
 |---|---|---|
 | `leading-ai-ddp-planning` | Team Lead | The whole engagement |
 | `conducting-project-overview` | Team Lead | 1. Project Overview |
-| `mapping-beliefs-and-bets` | Team Lead | 2. Beliefs and Bets |
+| `discovering-beliefs-and-bets` | Team Lead | 2. Beliefs and Bets |
 | `scoping-project-nodes` | Architect | 3. Project Scope |
 | `conducting-estimation-discovery` | Analyst and Team Lead | 4. Estimation Discovery |
 | `planning-project-work` | Analyst | 5. Project Plan |

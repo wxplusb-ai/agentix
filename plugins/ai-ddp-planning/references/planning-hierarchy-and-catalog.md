@@ -4,7 +4,7 @@ The structure of an AI-AD&D plan, the process that produces it, and how to use t
 
 ## Plan hierarchy
 
-- **Phase:** a collection of nodes, defined for the project and named for what it accomplishes. It may be an experiment ("Prove extraction accuracy"), a body of work ("Data Acquisition") or whatever grouping makes sense for the project. It does not have to match a catalog category.
+- **Phase:** a collection of nodes, defined for the project and named for what it accomplishes. A later phase may have no nodes chosen yet; it is still part of the scope and the plan, as a phase-level row. It may be an experiment ("Prove extraction accuracy"), a body of work ("Data Acquisition") or whatever grouping makes sense for the project. It does not have to match a catalog category.
 - **Node:** a node from the catalog. A node that repeats per instance is named `<Node name>: <instance>`, for example `System Instruction Prompt Library: Intake agent`.
 - **Task:** a task from the node in the catalog, adapted to the project's context and terminology. If the client uses Dagster, a task about orchestration says Dagster.
 
@@ -26,7 +26,7 @@ The process is the same for a new project and an in-flight one.
 
 ## The node catalog
 
-The catalog (`planning/discovery_driven_planning_node_catalog_v2.md`) is the source of truth for what work exists and how to plan it. It has 20 categories and 71 nodes. Do not restate it in deliverables; refer to nodes by number and name.
+The catalog (`planning/discovery_driven_planning_node_catalog_v2.md`) is the source of truth for what work exists and how to plan it. It has 20 categories and 71 nodes. Deliverables must stand alone: when a deliverable discusses a node, it explains the node in the client's terms, at length, and also gives its number and name so it can be found in the catalog.
 
 Each node has eight sections:
 

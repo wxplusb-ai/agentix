@@ -1,23 +1,14 @@
 # Beliefs and Bets
 
-How to surface the beliefs an AI application rests on, tell them from knowledge, judge them, and recognize the bets.
-
-## Finding beliefs people do not know they hold
-
-Clients state some beliefs outright ("users will pay for this"). Most are buried in plans, numbers and enthusiasm. Ways to surface them:
-
-- **Read every number as a belief.** "We'll save analysts 10 hours a week" contains beliefs about the current time spent, the share the application can take on, and analysts' willingness to use it.
-- **Ask what must be true.** For the outcome the client described, ask what would have to be true for it to happen, then ask the same of each answer.
-- **Look for "obviously" and "of course".** These mark beliefs the client has stopped noticing.
-- **Walk the workflow.** At each step the application performs, there is a belief that it can do that step well enough, often enough, cheaply enough.
-- **Walk the money.** Who pays, how much, how often, and what it costs to serve them. Each link is a belief.
-- **Use the unknown categories.** Every category the overview marked unknown hides at least one belief.
-- **Use the catalog.** The Assumptions Validated sections of the nodes likely to apply list assumptions that projects like this commonly rest on. Use them as prompts, not as a list to copy.
+The areas a Beliefs and Bets discussion walks through, how to draw out beliefs the client holds without noticing, how to tell belief from knowledge, and how to recognize the bets.
 
 ## Areas to cover
 
+Select the areas that apply to the project. The core bet always applies.
+
 | Area | Typical beliefs |
 |---|---|
+| Core bet | The single proposition the whole application stakes its existence on: that it can deliver a specific outcome, for a specific customer, at a cost and quality that makes it worth having |
 | Customer problem | The problem exists, is frequent and costly, for an identifiable group |
 | Value | Solving it is worth paying for, or saves enough to matter |
 | Alternatives | Existing alternatives, including general chat assistants, do not already solve it well enough |
@@ -28,6 +19,17 @@ Clients state some beliefs outright ("users will pay for this"). Most are buried
 | Autonomy | The application can act without a person in the loop where intended |
 | Operations | The client can run, monitor and support it once live |
 | Safety and compliance | It can meet regulatory, privacy and security obligations |
+
+## Drawing out beliefs during the discussion
+
+Clients state some beliefs outright ("users will pay for this"). Most are buried in plans, numbers and enthusiasm. Prompts to use as the conversation goes:
+
+- **Read every number as a belief.** "We'll save analysts 10 hours a week" contains beliefs about the current time spent, the share the application can take on, and analysts' willingness to use it. Ask about each.
+- **Ask what must be true.** For the outcome the client described, ask what would have to be true for it to happen, then ask the same of each answer.
+- **Listen for "obviously" and "of course".** These mark beliefs the client has stopped noticing. Ask how they know.
+- **Walk the workflow.** At each step the application performs, there is a belief that it can do that step well enough, often enough, cheaply enough.
+- **Walk the money.** Who pays, how much, how often, and what it costs to serve them. Each link is a belief.
+- **Use the gaps in the overview.** Where the client did not know something during the Project Overview, there is usually a belief behind it.
 
 ## Belief or knowledge?
 
@@ -49,7 +51,7 @@ Thresholds are proposals; the client sets them.
 Ask: if this turns out to be false, what happens to the project?
 
 - **High:** the project fails, or must change its customer, value proposition or core approach.
-- **Medium:** a significant part of the plan changes, but the venture survives.
+- **Medium:** a significant part of the project changes, but the venture survives.
 - **Low:** a local adjustment.
 
 ## Judging evidence
@@ -60,4 +62,4 @@ Ask: if this turns out to be false, what happens to the project?
 
 ## Recognizing the bets
 
-A bet is a High-consequence belief with Some or None evidence. A bet with None evidence is a leap of faith: the project is staking everything on something nobody has checked. These are what discovery-driven planning exists to test first, at the lowest cost that gives a decisive answer.
+A bet is a High-consequence belief with Some or None evidence. A bet with None evidence is a leap of faith: the project is staking everything on something nobody has checked. These are what discovery-driven planning exists to validate first, at the lowest cost that gives a decisive answer. Validation happens through the nodes selected at scoping, not through separate experiments defined here.
