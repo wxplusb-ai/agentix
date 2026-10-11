@@ -917,9 +917,9 @@ A specialized security authority module that binds an executing agent's tool inv
 * **Rejected**: An agent can safely run using a global service account without user-level access control checks.
 
 
-## Category 5: Operational Data Engineering
+## Category 5: Data Engineering
 
-### Node 5.1: Operational Data Schema
+### Node 5.1: Data Schema
 
 #### 1. Overview
 A relational or document database schema specification, Entity-Relationship Diagram (ERD), and set of version-controlled database migration files defining application state tables.
@@ -931,7 +931,7 @@ A relational or document database schema specification, Entity-Relationship Diag
 * `Product Requirements Document` `[Document]`: Entity definitions and functional data requirements.
 
 #### 4. Outputs
-* `Operational Data Schema` `[Document / Config]`: ERD diagrams, SQL migration files, and ORM schema definitions.
+* `Data Schema` `[Document / Config]`: ERD diagrams, SQL migration files, and ORM schema definitions.
 
 #### 5. Tasks
 
@@ -969,19 +969,19 @@ A relational or document database schema specification, Entity-Relationship Diag
 * **Rejected**: Unstructured, schema-less data storage without explicit constraints can maintain data integrity across multi-developer projects.
 
 
-### Node 5.2: Operational Database Instance
+### Node 5.2: Database Instance
 
 #### 1. Overview
 A provisioned relational (PostgreSQL), document (MongoDB), or key-value database cluster configured with connection pooling, automated backups, and read replicas.
 
 #### 2. Prerequisites
-* Database schemas and ORM migration files ready in `Operational Data Schema`.
+* Database schemas and ORM migration files ready in `Data Schema`.
 
 #### 3. Inputs
-* `Operational Data Schema` `[Document / Config]`: SQL migration scripts and schema definitions.
+* `Data Schema` `[Document / Config]`: SQL migration scripts and schema definitions.
 
 #### 4. Outputs
-* `Operational Database Instance` `[Software Component]`: Provisioned database server cluster and active connection pool consumed by `Backend Web API Service`.
+* `Database Instance` `[Software Component]`: Provisioned database server cluster and active connection pool consumed by `Backend Web API Service`.
 
 #### 5. Tasks
 
@@ -1025,10 +1025,10 @@ A provisioned relational (PostgreSQL), document (MongoDB), or key-value database
 A curated dataset of reference records, lookup tables, system configuration parameters, and initial test fixtures required to populate the operational database on deployment.
 
 #### 2. Prerequisites
-* Operational database instance is active and migrated via `Operational Database Instance`.
+* Database instance is active and migrated via `Database Instance`.
 
 #### 3. Inputs
-* `Operational Database Instance` `[Software Component]`: Active database cluster and schema.
+* `Database Instance` `[Software Component]`: Active database cluster and schema.
 
 #### 4. Outputs
 * `Seed and Reference Dataset` `[Dataset]`: Version-controlled SQL seed scripts, JSON fixtures, and initial population data.
@@ -1069,20 +1069,20 @@ A curated dataset of reference records, lookup tables, system configuration para
 * **Rejected**: Manual database record creation after deployment is acceptable for production systems.
 
 
-### Node 5.4: Operational Data Ingestion Pipeline
+### Node 5.4: Data Ingestion Pipeline
 
 #### 1. Overview
 An automated background ETL/ELT data pipeline that extracts, cleans, transforms, and synchronizes external operational application data into active databases.
 
 #### 2. Prerequisites
-* Target database tables and connection credentials ready from `Operational Database Instance`.
+* Target database tables and connection credentials ready from `Database Instance`.
 
 #### 3. Inputs
-* `Operational Database Instance` `[Software Component]`: Active database cluster connection.
+* `Database Instance` `[Software Component]`: Active database cluster connection.
 * `External Data Sources` `[Dataset / Source]`: External APIs, webhooks, or raw files containing application data.
 
 #### 4. Outputs
-* `Operational Data Ingestion Pipeline` `[Software Component]`: Automated ETL worker pipeline synchronizing application data into active operational database tables.
+* `Data Ingestion Pipeline` `[Software Component]`: Automated ETL worker pipeline synchronizing application data into active operational database tables.
 
 #### 5. Tasks
 
@@ -2333,10 +2333,10 @@ A production REST or gRPC backend web API server (FastAPI, Express, Go) that rou
 A message broker (RabbitMQ, Redis) and distributed background worker cluster (Celery, Temporal) that executes long-running, asynchronous agent tasks off the main web request thread.
 
 #### 2. Prerequisites
-* Operational database ready from `Operational Database Instance`; backend server active from `Application Backend Web Service`.
+* Database ready from `Database Instance`; backend server active from `Application Backend Web Service`.
 
 #### 3. Inputs
-* `Operational Database Instance` `[Software Component]`: Database cluster connection for task result persistence.
+* `Database Instance` `[Software Component]`: Database cluster connection for task result persistence.
 * `Message Broker Credentials` `[Config]`: Connection configs for Redis/RabbitMQ message broker.
 
 #### 4. Outputs
@@ -2488,10 +2488,10 @@ A data privacy masking software module that scans text inputs, prompts, and comp
 A tamper-evident logging software component that records full execution provenance, user IDs, prompt inputs, model responses, tool parameters, and decision traces to an immutable log store for forensic auditing.
 
 #### 2. Prerequisites
-* Database or object storage infrastructure available from `Operational Database Instance`.
+* Database or object storage infrastructure available from `Database Instance`.
 
 #### 3. Inputs
-* `Operational Database Instance` `[Software Component]`: Database/object storage infrastructure for log persistence.
+* `Database Instance` `[Software Component]`: Database/object storage infrastructure for log persistence.
 
 #### 4. Outputs
 * `Immutable Audit Trail Logger` `[Software Component]`: Immutable audit trail logging service consumed by all system backend services.
@@ -2692,10 +2692,10 @@ An administrative web application interface allowing human operators to inspect 
 A backend queue management service that receives flagged agent tasks, assigns review items to qualified human operators, tracks review SLA timers, and manages queue escalation paths.
 
 #### 2. Prerequisites
-* Operational database ready in `Operational Database Instance`; backend server active in `Application Backend Web Service`.
+* Database ready in `Database Instance`; backend server active in `Application Backend Web Service`.
 
 #### 3. Inputs
-* `Operational Database Instance` `[Software Component]`: Database for queue state persistence.
+* `Database Instance` `[Software Component]`: Database for queue state persistence.
 * `Application Backend Web Service` `[Software Component]`: Web server emitting review requests.
 
 #### 4. Outputs
@@ -2950,10 +2950,10 @@ An automated evaluation test harness (DeepEval, Ragas, Braintrust) that runs tra
 A collection of version-controlled Infrastructure as Code (IaC) configuration files (Terraform, Dockerfiles, Kubernetes Helm charts) that declaratively define cloud networking, containers, and serverless infrastructure.
 
 #### 2. Prerequisites
-* Architecture topology and database infrastructure specifications defined in `Operational Database Instance` and `Application Backend Web Service`.
+* Architecture topology and database infrastructure specifications defined in `Database Instance` and `Application Backend Web Service`.
 
 #### 3. Inputs
-* `Operational Database Instance` `[Software Component]`: Database hosting specs.
+* `Database Instance` `[Software Component]`: Database hosting specs.
 * `Application Backend Web Service` `[Software Component]`: Web service container specs.
 
 #### 4. Outputs

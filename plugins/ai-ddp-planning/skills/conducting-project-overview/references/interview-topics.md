@@ -76,7 +76,7 @@ Not every project needs every topic. Once you know the project's nature, rule ou
 
 - **Learn:** what the application must know (documents, records, domain knowledge), where it lives, how much, how often it changes, how sensitive it is; whether the application keeps its own records; whether it must remember users across sessions; whether models will be adapted with project data.
 - **Ask:** What information does it need to do the job, and where does that live today? How much is there, and how often does it change? Does it contain personal or confidential data? Should it remember users between sessions? Do you expect to fine-tune a model?
-- **Informs:** Category 5 Operational Data Engineering (5.1 to 5.4; 5.4 if external data must be synchronized), Category 6 Knowledge Retrieval Engineering (6.1, 6.2, 6.4; 6.3 if relationships between entities matter), Category 7 Context and Memory Engineering (7.1, 7.2; 7.3 if it remembers users), Category 20 Model Adaptation and Continuous Improvement (20.1 to 20.4, only if models will be adapted or improved from production feedback), 13.2 PII Redaction Engine if personal data is involved.
+- **Informs:** Category 5 Data Engineering (5.1 to 5.4; 5.4 if external data must be synchronized), Category 6 Knowledge Retrieval Engineering (6.1, 6.2, 6.4; 6.3 if relationships between entities matter), Category 7 Context and Memory Engineering (7.1, 7.2; 7.3 if it remembers users), Category 20 Model Adaptation and Continuous Improvement (20.1 to 20.4, only if models will be adapted or improved from production feedback), 13.2 PII Redaction Engine if personal data is involved.
 
 ### 11. Integrations and operating environment
 
