@@ -197,6 +197,17 @@ claude --plugin-dir <path-to-agentix>/plugins/ai-ddp-planning --agent ai-ddp-pla
 
 You still need the `xlsx` skill from Step 4 to build the plan workbook.
 
+### Updating the plugin
+
+To get a newer version, run these in the project folder where the plugin is installed, then start a new Claude Code session:
+
+```bash
+claude plugin marketplace update agentix
+claude plugin update ai-ddp-planning@agentix --scope project
+```
+
+Each installation is separate. If you plan both in Windows and in WSL2, update each one in its own terminal.
+
 ## Usage
 
 Start Claude Code with the Team Lead as the main agent:
@@ -216,6 +227,19 @@ If you will plan in this repository often, make the Team Lead the default agent 
 ```
 
 With that setting, running `claude` on its own starts the engagement.
+
+### From the Claude panel in VS Code
+
+The Claude panel in VS Code does not accept the `--agent` option. Start the engagement there by typing:
+
+```
+/ai-ddp-planning:leading-ai-ddp-planning
+```
+
+Your session then leads the engagement as the Team Lead and brings in the Architect, Analyst and Integrator when their steps come up.
+
+- **Start a new session after installing or updating the plugin.** The panel loads plugins when a session starts, so a conversation that was already open does not see the change. If the command is missing, run **Developer: Reload Window** from the Command Palette and open a new conversation.
+- **The agents do not appear in the `/` menu.** That menu lists skills and commands only. The agents are loaded and are started when the engagement reaches their steps.
 
 ### Providing documents
 
